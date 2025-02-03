@@ -1,0 +1,18 @@
+.header {
+  background: linear-gradient(to bottom, black, transparent);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw; /* Ocupa todo el ancho de la pantalla */
+  height: auto; /* Ajusta la altura automáticamente */
+  padding: 0; /* Quita el padding para que no afecte el tamaño */
+}
+
+.header img {
+  max-width: 100%; /* Asegura que la imagen sea responsive */
+  height: auto; /* Mantén las proporciones de la imagen */
+}
+
+.carousel {
+  width: 100vw;
+}
