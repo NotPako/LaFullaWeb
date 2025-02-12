@@ -1,6 +1,6 @@
 import Image from "next/image";
-import '@/styles/styles.css'
-import { Menu } from "antd";
+import '@/styles/styles.css';
+import '@/components/Header/Header.css';
 import { MenuProps } from "antd";
 import { useState } from "react";
 
@@ -26,10 +26,18 @@ export default function Header() {
 
   return (
     <div className="header">
-   
-        <Image alt='La Fulla' src='/media/LogoGROCFULLA.png' width='100' height = '100'>
+        <div className='titolFulla'>
+          <h2>LA FULLA</h2>
+        </div>
+        <Image alt='La Fulla' src='/media/LogoGROCFULLA.png' width='100' height = '100' className='logo'>
             
         </Image>
+        <div className="menu">
+          <div className= 'menuItem'><h1>Concerts</h1></div>
+          <div className= 'menuItem'><h1>Merxandatge</h1></div>
+          <div className= 'menuItem'><h1>Contacte</h1></div>
+          <div className= 'menuItem'><h1>Discografia</h1></div>
+        </div>
 
 
      

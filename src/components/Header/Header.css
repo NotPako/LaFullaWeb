@@ -1,0 +1,54 @@
+.menu {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position:absolute;
+    right: 5vw;
+}
+
+.menuItem {
+    text-decoration: none;
+    color: white;
+    font-size: 2vw;
+    padding: 10px 15px;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.menuItem::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    display: block;
+    margin-top: 5px;
+    right: 0;
+    background: #ffcc00;
+    transition: width 0.3s ease;
+    -webkit-transition: width 0.3s ease;
+}
+
+.menuItem:hover::after {
+    width: 100%;
+    left: 0;
+    background: #ffcc00;
+}
+
+.menuItem:hover {
+    color: #ffcc00;
+    cursor: pointer;
+}
+
+.titolFulla {
+    margin-left: 10vw;
+    align-items: center;
+    color: #ffcc00;
+    font-size: 2vw;
+    position: absolute;
+    left: 10vw;
+}
