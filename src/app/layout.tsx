@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "La Fulla",
   description: "",
-  icons: "/fullaicon.png"
+  icons:"/favicon.png"
 };
 
 export default function RootLayout({
