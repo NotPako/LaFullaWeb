@@ -14,8 +14,14 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "La Fulla",
-  description: "",
-  icons:"/favicon.png"
+  description: "Lloc web de La Fulla grup",
+  icons: {
+    icon: [
+      {
+        url:"/favicon.png"
+      }
+    ]
+  }
 };
 
 export default function RootLayout({
