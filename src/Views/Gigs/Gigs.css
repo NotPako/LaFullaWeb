@@ -1,0 +1,5 @@
+.fullWidthGigs{
+    width: 100vw;
+    display: grid;
+    margin-top: 100vh;
+}

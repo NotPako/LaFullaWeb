@@ -7,9 +7,12 @@
   width: 100vw; /* Ocupa todo el ancho de la pantalla */
   height: auto; /* Ajusta la altura automáticamente */
   padding: 0; /* Quita el padding para que no afecte el tamaño */
+  position: fixed;
+  top: 0;
 }
 .header {
   grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+
 }
 .header img {
   max-width: 100%; /* Asegura que la imagen sea responsive */
