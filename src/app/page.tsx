@@ -22,7 +22,7 @@ export default function Home() {
       <div style={{display: 'flex', flexDirection: 'column'}}>
       <Header landingRef={landingRef} gigsRef={gigsRef}>
       </Header>
-      <Landing/>  
+      <div ref={landingRef}><Landing/></div>
       <div ref={gigsRef}><Gigs/></div>
       <Footer>
       </Footer>
