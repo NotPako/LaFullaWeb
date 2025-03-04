@@ -1,5 +1,17 @@
 .fullWidthGigs{
     width: 100vw;
-    display: grid;
     margin-top: 100vh;
+    background-image: url("/media/FotoRockCity.jpg");
+    height: 135vh;
+    background-size: cover;
+    align-items: center;
+    justify-content: center;
+    display: grid;
+    grid-template-rows: auto auto; /* Dos filas */
+    grid-template-columns: repeat(2, 1fr); /* Dos columnas en la primera fila */
+    justify-items: center; /* Centrar elementos horizontalmente */
+    align-items: center; /* Centrar elementos verticalmente */
 }
+
+
+

@@ -19,7 +19,7 @@ export default function Home() {
 
   return (
     <div className={bebas.className} >
-      <div style={{display: 'flex', flexDirection: 'column'}}>
+      <div style={{display: 'flex', flexDirection: 'column', width:'100vw'}}>
       <Header landingRef={landingRef} gigsRef={gigsRef}>
       </Header>
       <div ref={landingRef}><Landing/></div>

@@ -1,4 +1,5 @@
 import React from "react";
+import './Gig.css'
 
 interface GigProps {
   titulo: string;
@@ -8,10 +9,10 @@ interface GigProps {
 
 const Gig: React.FC<GigProps> = ({ titulo, fecha, lugar }) => {
   return (
-    <div className="p-4 border rounded-lg shadow-md bg-white grid gap-4">
-      <h2 className="text-xl font-bold">{titulo}</h2>
-      <p className="text-gray-600">{fecha}</p>
-      <p className="text-gray-500">{lugar}</p>
+    <div className="gigStyle">
+      <h1 className="tituloStyle">{titulo}</h1>
+      <p className="fechaStyle">{fecha}</p>
+      <p className="lugarStyle">{lugar}</p>
     </div>
   );
 };
