@@ -11,8 +11,11 @@ const Gig: React.FC<GigProps> = ({ titulo, fecha, lugar }) => {
   return (
     <div className="gigStyle">
       <h1 className="tituloStyle">{titulo}</h1>
-      <p className="fechaStyle">{fecha}</p>
-      <p className="lugarStyle">{lugar}</p>
+      <div className="highlight-text">
+      <p>{fecha}</p>
+      <p>{lugar}</p>
+      </div>
+      
     </div>
   );
 };

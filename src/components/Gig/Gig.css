@@ -23,7 +23,7 @@
     width: 0;
     height: 2px;
     display: block;
-    margin-top: 5px;
+    margin-top: 0px;
     right: 0;
     transition: width 0.3s ease;
     -webkit-transition: width 0.3s ease;
@@ -37,4 +37,27 @@
 
 .lugarStyle{
     color:grey;
+}
+
+@keyframes highlight {
+    0% { color: white; text-shadow: 0 0 5px #fff, 0 0 10px #ff0, 0 0 15px #ff0; }
+    50% { color: yellow; text-shadow: 0 0 10px #ff0, 0 0 20px #ff0, 0 0 30px #ff0; }
+    100% { color: white; text-shadow: 0 0 5px #fff, 0 0 10px #ff0, 0 0 15px #ff0; }
+}
+
+.highlight-text:hover {
+    color: grey;
+    font-size: 2rem;
+    font-weight: bold;
+    transition: all 0.3s ease-in-out;
+    animation: highlight 1.5s infinite alternate;
+}
+
+.highlight-text{
+    color: grey;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
 }
