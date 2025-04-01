@@ -19,11 +19,13 @@ export default function Home() {
 
   return (
     <div className={bebas.className} >
-      <div style={{display: 'flex', flexDirection: 'column', width:'100vw'}}>
+      <div>
       <Header landingRef={landingRef} gigsRef={gigsRef}>
       </Header>
-      <div ref={landingRef}><Landing/></div>
-      <div ref={gigsRef}><Gigs/></div>
+      <div className="grid grid-rows-2">
+        <div ref={landingRef}><Landing/></div>
+        <div ref={gigsRef}><Gigs/></div>
+      </div>
       <Footer>
       </Footer>
       </div>

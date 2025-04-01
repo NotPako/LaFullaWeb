@@ -34,14 +34,14 @@ export default function Header({ landingRef, gigsRef }: HeaderProps) {
         <div className='titolFulla'>
           <h2>LA FULLA</h2>
         </div>
-        <div onClick={() => landingRef.current?.scrollIntoView({ behavior: "smooth" , block: "end"})}>
+        <div onClick={() => landingRef.current?.scrollIntoView({ behavior: "smooth" , block: "start"})}>
         <Image alt='La Fulla' src='/media/LogoGROCFULLA.png' width='100' height = '100' className='logo'/>
         </div>
        
             
        
         <div className="menu">
-          <div className= 'menuItem'  onClick={() => gigsRef.current?.scrollIntoView({ behavior: "smooth" , block: "end"})} ><h1>Concerts</h1></div>
+          <div className= 'menuItem'  onClick={() => gigsRef.current?.scrollIntoView({ behavior: "smooth" , block: "start"})} ><h1>Concerts</h1></div>
           <div className= 'menuItem'><h1>Merxandatge</h1></div>
           <div className= 'menuItem'><h1>Contacte</h1></div>
           <div className= 'menuItem'><h1>Discografia</h1></div>

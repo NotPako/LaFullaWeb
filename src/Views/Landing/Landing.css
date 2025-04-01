@@ -1,7 +1,6 @@
 .landingStyle {
     background: linear-gradient(to top, black, transparent);
     position: absolute;
-    top:0;
     z-index: 0;
     height: auto;
 }
