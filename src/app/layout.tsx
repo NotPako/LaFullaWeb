@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       {
-        url:"/favicon.png"
+        url:"/media/LogoGROCFULLA.png"
       }
     ]
   }
