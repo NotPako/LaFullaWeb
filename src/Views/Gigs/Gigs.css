@@ -1,7 +1,7 @@
 .fullWidthGigs{
-    width: 100%;
+    width: 100vw;
     background-image: url("/media/FotoRockCity.jpg");
-    height: 127vh;
+    height: 130vh;
     background-size: cover;
     align-items: center;
     justify-content: center;

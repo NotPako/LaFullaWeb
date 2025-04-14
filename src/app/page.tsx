@@ -20,14 +20,13 @@ export default function Home() {
 
 
   return (
-    <div className={bebas.className} >
+    <div className={bebas.className}>
       <div>
       <Header landingRef={landingRef} gigsRef={gigsRef} merxRef={merxRef}>
       </Header>
-      <div className="grid grid-rows-3">
+      <div className="grid grid-rows-2 w-screen">
         <div ref={landingRef}><Landing/></div>
         <div ref={gigsRef}><Gigs/></div>
-        <div ref={merxRef}><Merx/></div>
       </div>
       <Footer>
       </Footer>
