@@ -24,9 +24,9 @@ export default function Home() {
       <div>
       <Header landingRef={landingRef} gigsRef={gigsRef} merxRef={merxRef}>
       </Header>
-      <div className="grid grid-rows-2 w-screen">
-        <div ref={landingRef}><Landing/></div>
-        <div ref={gigsRef}><Gigs/></div>
+      <div className="grid grid-rows-2">
+        <div ref={landingRef} className="inline-block"><Landing/></div>
+        <div ref={gigsRef} className="inline-block" ><Gigs/></div>
       </div>
       <Footer>
       </Footer>
