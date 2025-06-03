@@ -1,43 +1,53 @@
 import React from 'react';
 import './Merx.css';
-import { Carousel, Form, Input, Select, Typography, Button } from 'antd';
+import { Carousel, Form, Input, Select, Typography, Button, message } from 'antd';
 
 const { Title, Paragraph } = Typography;
 const { Option } = Select;
 const { TextArea } = Input;
 
 export default function Merx() {
+  const [form] = Form.useForm();
+  const [messageApi, contextHolder] = message.useMessage();
+
   const onFinish = (values: any) => {
     console.log('Form data:', values);
+
+    messageApi.open({
+      type: 'success',
+      content: "S'ha enviat la teva comanda correctament! Rebràs un correu de confirmació aviat.",
+    });
+
+
+    form.resetFields();
   };
 
   return (
     <div className='merxStyle'>
-      {/* Carrusel a la izquierda */}
+      {/* Carrusel */}
       <div className='carouselContainer'>
         <Carousel autoplay arrows>
-          <div>
-            <img src="/media/merxan1.jpeg" alt="Imagen 1" className="carouselImage" />
-          </div>
-          <div>
-            <img src="/media/merxan2.jpeg" alt="Imagen 2" className="carouselImage" />
-          </div>
-          <div>
-            <img src="/media/merxan3.jpeg" alt="Imagen 3" className="carouselImage" />
-          </div>
-          <div>
-            <img src="/media/merxan4.jpeg" alt="Imagen 4" className="carouselImage" />
-          </div>
+          {['merxan1', 'merxan2', 'merxan3', 'merxan4'].map((img, idx) => (
+            <div key={idx}>
+              <img
+                src={`/media/${img}.jpeg`}
+                alt={`Imagen ${idx + 1}`}
+                className="carouselImage"
+              />
+            </div>
+          ))}
         </Carousel>
       </div>
 
-      {/* Formulario a la derecha */}
+      {/* Formulario */}
+      {contextHolder} 
       <div className='formContainer'>
         <Title level={3} style={{ color: '#ffcc00' }}>Fes la teva comanda</Title>
-        <Paragraph style={{ color: '#ffffff' }}>Escull el producte, talla i introdueix les teves dades</Paragraph>
-         <Paragraph style={{ color: '#ffffff' }}>Es ficarem en contacte amb tú per tramitar el pagament i l'enviament</Paragraph>
+        <Paragraph style={{ color: '#ffffff' }}>
+          Escull el producte, talla i introdueix les teves dades:
+        </Paragraph>
 
-        <Form layout="vertical" onFinish={onFinish}>
+        <Form form={form} layout="vertical" onFinish={onFinish}>
           <Form.Item label="Producte" name="product" rules={[{ required: true }]}>
             <Select placeholder="Selecciona un producte">
               <Option value="samarreta-nucs">Samarreta Nucs de Vidre - 15€</Option>
@@ -49,20 +59,17 @@ export default function Merx() {
 
           <Form.Item label="Talla" name="size" rules={[{ required: true }]}>
             <Select placeholder="Selecciona una talla">
-              <Option value="XS">XS</Option>
-              <Option value="S">S</Option>
-              <Option value="M">M</Option>
-              <Option value="L">L</Option>
-              <Option value="XL">XL</Option>
-              <Option value="XXL">XXL</Option>
+              {['XS', 'S', 'M', 'L', 'XL', 'XXL'].map((size) => (
+                <Option key={size} value={size}>{size}</Option>
+              ))}
             </Select>
           </Form.Item>
 
-          <Form.Item label="Correu electrònic" name="Correu" rules={[{ type: 'email', required: true }]}>
+          <Form.Item label="Correu electrònic" name="email" rules={[{ type: 'email', required: true }]}>
             <Input placeholder="Ex: tu@email.com" />
           </Form.Item>
 
-          <Form.Item label="Telèfon mòbil" name="Telèfon" rules={[{ required: true }]}>
+          <Form.Item label="Telèfon mòbil" name="phone" rules={[{ required: true }]}>
             <Input placeholder="Ex: 612345678" />
           </Form.Item>
 
