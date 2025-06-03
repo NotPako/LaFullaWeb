@@ -1,8 +1,6 @@
 import Image from "next/image";
 import '@/styles/styles.css';
 import '@/components/Header/Header.css';
-import { MenuProps } from "antd";
-import { useState } from "react";
 
 
 

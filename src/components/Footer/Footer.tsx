@@ -8,7 +8,7 @@ export default function Footer () {
                 <p>&copy; {new Date().getFullYear()} La Fulla. Tots els drets reservats</p>
                 <p>Pàgina dissenyada per Pako</p>
                 <nav className="footer-nav">
-                    <a href="/contact">Contactan `&apos;`s</a>
+                    <a href="/contact">Contactan&apos;s</a>
                 </nav>
             </div>
         </footer>
