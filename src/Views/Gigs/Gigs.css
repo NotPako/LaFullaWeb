@@ -3,13 +3,6 @@
     background-image: url("/media/FotoRockCity.jpg");
     height: 130vh;
     background-size: cover;
-    align-items: center;
-    justify-content: center;
-    display: grid;
-    grid-template-rows: auto 0.1rem; /* Dos filas */
-    grid-template-columns: repeat(2, 60rem); /* Dos columnas en la primera fila */
-    justify-items: center; /* Centrar elementos horizontalmente */
-    align-items: center; /* Centrar elementos verticalmente */
     overflow: hidden;
 }
 

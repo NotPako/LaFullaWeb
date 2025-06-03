@@ -26,7 +26,7 @@ export default function Home() {
       </Header>
       <div className="grid grid-rows-2">
         <div ref={landingRef} className="inline-block"><Landing/></div>
-        <div ref={gigsRef} className="inline-block" ><Gigs/></div>
+        <div ref={gigsRef} className="inline-block" ><Merx/></div>
       </div>
       <Footer>
       </Footer>

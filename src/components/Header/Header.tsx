@@ -42,8 +42,7 @@ export default function Header({ landingRef, gigsRef, merxRef }: HeaderProps) {
             
        
         <div className="menu">
-          <div className= 'menuItem'  onClick={() => gigsRef.current?.scrollIntoView({ behavior: "smooth" , block: "start"})} ><h1>Concerts</h1></div>
-          <div className= 'menuItem' onClick={() => merxRef.current?.scrollIntoView({ behavior: "smooth" , block: "start"})}><h1>Merxandatge</h1></div>
+          <div className= 'menuItem' onClick={() => gigsRef.current?.scrollIntoView({ behavior: "smooth" , block: "start"})}><h1>Merxandatge</h1></div>
           <div className= 'menuItem'><h1>Contacte</h1></div>
           <div className= 'menuItem'><h1>Discografia</h1></div>
         </div>
