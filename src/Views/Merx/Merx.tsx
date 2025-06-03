@@ -6,11 +6,20 @@ const { Title, Paragraph } = Typography;
 const { Option } = Select;
 const { TextArea } = Input;
 
+interface FormValues {
+  product: string;
+  size: string;
+  email: string;
+  phone: string;
+  comments?: string; // Opcional porque no es obligatorio
+}
+
+
 export default function Merx() {
   const [form] = Form.useForm();
   const [messageApi, contextHolder] = message.useMessage();
 
-  const onFinish = (values: any) => {
+  const onFinish = (values: FormValues) => {
     console.log('Form data:', values);
 
     messageApi.open({

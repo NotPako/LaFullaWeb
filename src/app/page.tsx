@@ -3,7 +3,6 @@ import { useRef } from 'react';
 import Header from '@/components/Header/Header';
 import Footer from '@/components/Footer/Footer';
 import Landing from '@/Views/Landing/Landing';
-import Gigs from '@/Views/Gigs/Gigs';
 import Merx from '@/Views/Merx/Merx';
 import { Bebas_Neue } from 'next/font/google';
 

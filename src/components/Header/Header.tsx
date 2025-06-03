@@ -5,18 +5,8 @@ import { MenuProps } from "antd";
 import { useState } from "react";
 
 
-type MenuItem = Required<MenuProps>['items'][number];
 
-const items: MenuItem[] = [
-  {
-    label: 'Concerts',
-    key: 'bolos'
-  },
-  {
-    label: 'Marxandatge',
-    key: 'merxan'
-  }
-];
+
 
 interface HeaderProps {
   landingRef: React.RefObject<HTMLDivElement | null>
@@ -26,9 +16,9 @@ interface HeaderProps {
 
 
 
-export default function Header({ landingRef, gigsRef, merxRef }: HeaderProps) {
+export default function Header({ landingRef, gigsRef }: HeaderProps) {
 
-  const [current, setCurrent] = useState('mail');
+
 
   return (
     <div className="header">
