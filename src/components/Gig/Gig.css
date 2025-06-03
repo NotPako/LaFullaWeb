@@ -1,7 +1,7 @@
 .gigStyle {
     color: white;
     width: auto;
-    height: 5vh;
+    height: auto;
     font-size: 1.5rem;
     z-index: 2;
     display: flex;
@@ -23,7 +23,6 @@
     width: 0;
     height: 2px;
     display: block;
-    margin-top: 0px;
     right: 0;
     transition: width 0.3s ease;
     -webkit-transition: width 0.3s ease;
@@ -47,7 +46,7 @@
 
 .highlight-text:hover {
     color: grey;
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-weight: bold;
     transition: all 0.3s ease-in-out;
     animation: highlight 1.5s infinite alternate;
@@ -61,3 +60,4 @@
     align-items: center;
 
 }
+

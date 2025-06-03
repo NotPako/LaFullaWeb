@@ -1,0 +1,28 @@
+.carousel-container {
+  width: 50%;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  position: absolute;
+  top: 8rem; 
+  right: 22rem;
+}
+
+.carousel-title {
+    align-items: center;
+    color: #ffcc00;
+    font-size: 1.5vw;
+    cursor:default;
+    text-align: center;
+    margin-bottom: 2rem;
+    border-bottom: 2px solid #ffcc00;
+}
+
+.carousel-slide {
+  display: flex;
+  width:200px;
+  justify-content: center;
+  align-items: center;
+  min-height: 400px;
+  font-weight: bold;
+}

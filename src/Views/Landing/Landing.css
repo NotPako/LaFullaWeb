@@ -1,7 +1,8 @@
 .landingStyle {
-    background: linear-gradient(to top, black, transparent);
+    background-image: url('/media/654A5957.jpg');
+    background-size: cover;
     width: 100vw;
+    height: 130vh;
     position: absolute;
     z-index: 0;
-    height: auto;
 }
