@@ -10,11 +10,12 @@ interface HeaderProps {
   landingRef: React.RefObject<HTMLDivElement | null>
   gigsRef: React.RefObject<HTMLDivElement | null>;
   merxRef: React.RefObject<HTMLDivElement | null>;
+  discografiaRef: React.RefObject<HTMLDivElement | null>;
 }
 
 
 
-export default function Header({ landingRef, gigsRef }: HeaderProps) {
+export default function Header({ landingRef, gigsRef, discografiaRef }: HeaderProps) {
 
 
 
@@ -32,7 +33,7 @@ export default function Header({ landingRef, gigsRef }: HeaderProps) {
         <div className="menu">
           <div className= 'menuItem' onClick={() => gigsRef.current?.scrollIntoView({ behavior: "smooth" , block: "start"})}><h1>Merxandatge</h1></div>
           <div className= 'menuItem'><h1>Contacte</h1></div>
-          <div className= 'menuItem'><h1>Discografia</h1></div>
+          <div className= 'menuItem' onClick={() => discografiaRef.current?.scrollIntoView({ behavior: "smooth" , block: "start"})}><h1>Discografia</h1></div>
         </div>
 
 

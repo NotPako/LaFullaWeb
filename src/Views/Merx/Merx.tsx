@@ -11,9 +11,8 @@ interface FormValues {
   size: string;
   email: string;
   phone: string;
-  comments?: string; // Opcional porque no es obligatorio
+  comments?: string;
 }
-
 
 export default function Merx() {
   const [form] = Form.useForm();
@@ -26,7 +25,6 @@ export default function Merx() {
       type: 'success',
       content: "S'ha enviat la teva comanda correctament! Rebràs un correu de confirmació aviat.",
     });
-
 
     form.resetFields();
   };
@@ -49,7 +47,7 @@ export default function Merx() {
       </div>
 
       {/* Formulario */}
-      {contextHolder} 
+      {contextHolder}
       <div className='formContainer'>
         <Title level={3} style={{ color: '#ffcc00' }}>Fes la teva comanda</Title>
         <Paragraph style={{ color: '#ffffff' }}>

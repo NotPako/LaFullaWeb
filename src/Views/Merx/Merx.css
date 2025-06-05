@@ -1,36 +1,37 @@
 .merxStyle {
-    width: 100vw;
-    background-image: url("/media/FotoRockCity.jpg");
-    height: 130vh;
-    background-size: cover;
-    overflow: hidden;
-    display: flex;
+
+  width: 100vw;
+  min-height: 100vh;
+  background-image: url("/media/FotoRockCity.jpg");
+  background-size: cover;
+  background-position: center;
+  display: flex;
   justify-content: space-between;
-  align-items: center;
-  padding: 40px;
+  align-items: flex-start;
+  padding: 60px 40px;
   gap: 40px;
   flex-wrap: wrap;
 }
 
 .carouselContainer {
-  position: absolute;
-  top: 180vh;
-  left: 10vw;
-  transform: translateY(-50%);
-  width: 40rem;
-  min-height: auto;
+  flex: 1;
+  min-width: 300px;
+  max-width: 45%;
+  margin-top: 8rem; 
 }
 
-
+.carouselContainer img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
 
 .formContainer {
   flex: 1;
+  min-width: 300px;
   max-width: 45%;
-  position:absolute;
-  right: 20vw;
   color: white;
-  align-items: center;
-  margin-bottom: 14rem;
+  margin-top:8rem;
 }
 
 .ant-select,
@@ -41,12 +42,10 @@
   border: 1px solid #ccc !important;
 }
 
-/* Opcional: mejora contraste de etiquetas */
 .ant-form-item-label > label {
   color: #ffcc00 !important;
 }
 
-/* Botón de envío */
 .submitButton {
   background-color: #ffcc00;
   border: none;
