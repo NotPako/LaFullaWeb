@@ -1,10 +1,21 @@
-.discografiaStyle {
-  display: flex;
-  position: relative;
-  background-color: black;
-  flex-direction: column;
-  align-items: center;
-  height: 100vh;
-  width: 100vw;
-  padding: 20px;
+.discografia-section {
+  min-height: 100vh;
+  padding: 150px 20px;
+  background: linear-gradient(to bottom, #111, #000);
+  color: white;
+  text-align: center;
+}
+
+.discografia-title {
+  font-size: 3rem;
+  margin-bottom: 50px;
+  letter-spacing: 2px;
+}
+
+.spotify-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
 }

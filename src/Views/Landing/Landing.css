@@ -1,7 +1,7 @@
 .landingStyle {
     background-image: url('/media/654A5957.jpg');
     background-size: cover;
-    width: 100vw;
+    width: 100%;
     height: 130vh;
     z-index: 0;
 }

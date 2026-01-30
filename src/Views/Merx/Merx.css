@@ -1,6 +1,6 @@
 .merxStyle {
 
-  width: 100vw;
+  width: 100%;
   min-height: 100vh;
   background-image: url("/media/FotoRockCity.jpg");
   background-size: cover;
@@ -44,6 +44,8 @@
 
 .ant-form-item-label > label {
   color: #ffcc00 !important;
+  -webkit-text-stroke: 0.5px black;
+  font-weight: bold;
 }
 
 .submitButton {
