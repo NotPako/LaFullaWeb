@@ -4,6 +4,14 @@
   background: linear-gradient(to bottom, #111, #000);
   color: white;
   text-align: center;
+  position: relative;
+}
+
+.carouselDisc-container{
+  justify-content:center;
+  align-items:center;
+  padding-left: 150px;
+  padding-right:150px;;
 }
 
 .discografia-title {
@@ -19,3 +27,30 @@
   max-width: 1200px;
   margin: 0 auto;
 }
+
+.spotify-slide {
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+}
+
+/* Móvil → 1 elemento */
+.spotify-slide {
+  flex: 0 0 100%;
+  max-width: 100%;
+}
+
+
+
+/* Desktop → 3 elementos */
+@media (min-width: 1024px) {
+  .spotify-slide {
+    flex: 0 0 33.3333%;
+    max-width: 60%;
+  }
+}
+
+.spotify-slide iframe {
+  width: 100%;
+}
+
