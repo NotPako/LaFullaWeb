@@ -1,56 +1,61 @@
 .discografia-section {
   min-height: 100vh;
-  padding: 150px 20px;
+  padding: 100px 16px;
   background: linear-gradient(to bottom, #111, #000);
   color: white;
   text-align: center;
   position: relative;
 }
 
-.carouselDisc-container{
-  justify-content:center;
-  align-items:center;
-  padding-left: 150px;
-  padding-right:150px;;
-}
-
 .discografia-title {
-  font-size: 3rem;
-  margin-bottom: 50px;
+  font-size: 2rem;
+  margin-bottom: 40px;
   letter-spacing: 2px;
 }
 
-.spotify-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 40px;
-  max-width: 1200px;
-  margin: 0 auto;
+.carouselDisc-container {
+  padding-left: 16px;
+  padding-right: 16px;
 }
 
 .spotify-slide {
-  display: flex;
+  display: flex !important;
   justify-content: center;
-  padding: 10px;
-}
-
-/* Móvil → 1 elemento */
-.spotify-slide {
-  flex: 0 0 100%;
-  max-width: 100%;
-}
-
-
-
-/* Desktop → 3 elementos */
-@media (min-width: 1024px) {
-  .spotify-slide {
-    flex: 0 0 33.3333%;
-    max-width: 60%;
-  }
+  padding: 8px;
+  box-sizing: border-box;
 }
 
 .spotify-slide iframe {
   width: 100%;
+  border-radius: 12px;
+}
+
+/* Tablet */
+@media (min-width: 640px) {
+  .discografia-title {
+    font-size: 2.5rem;
+  }
+
+  .carouselDisc-container {
+    padding-left: 60px;
+    padding-right: 60px;
+  }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+  .discografia-section {
+    padding: 150px 20px;
+  }
+
+  .discografia-title {
+    font-size: 3rem;
+    margin-bottom: 50px;
+  }
+
+  .carouselDisc-container {
+    padding-left: 150px;
+    padding-right: 150px;
+  }
 }
 

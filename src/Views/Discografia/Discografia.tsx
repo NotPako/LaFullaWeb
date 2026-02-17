@@ -1,9 +1,8 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./Discografia.css";
 import SpotifyEmbed from "@/components/SpotifyEmbed/SpotifyEmbed";
 import { Carousel } from "antd";
-import { useEffect, useState } from "react";
 
 const spotifyItems = [
   { type: "album", id: "2Z67K7bSlNRCRMNi0Uhwpf" },
@@ -12,24 +11,26 @@ const spotifyItems = [
   { type: "playlist", id: "37i9dQZF1E4x5GhDbWfThD" },
 ] as const;
 
-
-export default function Discografia() {
-
-  function useIsMobile(breakpoint = 768) {
-  const [isMobile, setIsMobile] = useState(false);
+function useBreakpoint() {
+  const [slidesToShow, setSlidesToShow] = useState(3);
 
   useEffect(() => {
-    const check = () => setIsMobile(window.innerWidth < breakpoint);
+    const check = () => {
+      const w = window.innerWidth;
+      if (w < 640) setSlidesToShow(1);
+      else if (w < 1024) setSlidesToShow(2);
+      else setSlidesToShow(3);
+    };
     check();
     window.addEventListener("resize", check);
     return () => window.removeEventListener("resize", check);
-  }, [breakpoint]);
+  }, []);
 
-  return isMobile;
+  return slidesToShow;
 }
 
-  const isMobile = useIsMobile();
-  const slidesToShow = isMobile ? 2 : 3;
+export default function Discografia() {
+  const slidesToShow = useBreakpoint();
 
   return (
     <section className="discografia-section">

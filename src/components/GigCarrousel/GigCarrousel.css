@@ -1,29 +1,63 @@
 .carousel-container {
+  position: absolute;
+  z-index: 2;
+
+  /* Desktop */
   width: 50%;
   max-width: 600px;
-  margin: 0 auto;
-  padding: 20px;
-  position: absolute;
-  top: 8rem; 
+  top: 8rem;
   right: 22rem;
-  max-height: 200px;
+  padding: 20px;
 }
 
 .carousel-title {
-    align-items: center;
-    color: #ffcc00;
-    font-size: 1.5vw;
-    cursor:default;
-    text-align: center;
-    margin-bottom: 2rem;
-    border-bottom: 2px solid #ffcc00;
+  color: #ffcc00;
+  font-size: 1.5vw;
+  cursor: default;
+  text-align: center;
+  margin-bottom: 2rem;
+  border-bottom: 2px solid #ffcc00;
 }
 
 .carousel-slide {
   display: flex;
-  width:200px;
   justify-content: center;
   align-items: center;
-  min-height: 200px;
+  min-height: 150px;
   font-weight: bold;
+}
+
+/* ── Tablet ── */
+@media (max-width: 1024px) {
+  .carousel-container {
+    width: 60%;
+    right: 5%;
+    top: 6rem;
+  }
+
+  .carousel-title {
+    font-size: 1.8vw;
+  }
+}
+
+/* ── Mobile ── */
+@media (max-width: 768px) {
+  .carousel-container {
+    position: relative;
+    top: unset;
+    right: unset;
+    width: 90%;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 16px;
+  }
+
+  .carousel-title {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+
+  .carousel-slide {
+    min-height: 120px;
+  }
 }

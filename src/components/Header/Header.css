@@ -1,70 +1,157 @@
+/* ── Base header ── */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 4vw;
+  height: 70px;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* ── Logo ── */
+.logo {
+  margin-top: 10px;
+  transition: transform 0.3s ease; 
+  display: block;
+  cursor: pointer;
+}
+
+/* ── Título ── */
+.titolFulla {
+  color: #ffcc00;
+  font-size: clamp(1rem, 2vw, 1.5rem);
+  cursor: default;
+  white-space: nowrap;
+}
+
+/* ── Menú desktop ── */
 .menu {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 5px;
-    position:fixed;
-    right: 8vw;
-    top: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0;
 }
 
 .menuItem {
-    text-decoration: none;
-    color: white;
-    font-size: 2vw;
-    padding: 10px 15px;
-    position: relative;
-    transition: color 0.3s ease;
+  color: white;
+  font-size: clamp(0.75rem, 1.4vw, 1.1rem);
+  padding: 10px 15px;
+  position: relative;
+  transition: color 0.3s ease;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.menuItem h1 {
+  margin: 0;
+  font-size: inherit;
+  font-weight: inherit;
 }
 
 .menuItem::after {
-    content: '';
-    width: 0;
-    height: 2px;
-    display: block;
-    margin-top: 5px;
-    right: 0;
-    background: #ffcc00;
-    transition: width 0.3s ease;
-    -webkit-transition: width 0.3s ease;
+  content: '';
+  width: 0;
+  height: 2px;
+  display: block;
+  margin-top: 5px;
+  background: #ffcc00;
+  transition: width 0.3s ease;
 }
 
 .menuItem:hover::after {
-    width: 100%;
-    left: 0;
-    background: #ffcc00;
+  width: 100%;
+  background: #ffcc00;
 }
 
 .menuItem:hover {
-    color: #ffcc00;
-    cursor: pointer;
+  color: #ffcc00;
 }
 
-.titolFulla {
-    margin-left: 10vw;
-    align-items: center;
-    color: #ffcc00;
-    font-size: 2vw;
+/* ── Hamburguesa (oculta en desktop) ── */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 28px;
+  height: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 101;
+}
+
+.hamburger span {
+  display: block;
+  height: 2px;
+  width: 100%;
+  background: white;
+  border-radius: 2px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  transform-origin: center;
+}
+
+/* Animación a X cuando está abierto */
+.hamburger.open span:nth-child(1) {
+  transform: translateY(9px) rotate(45deg);
+}
+.hamburger.open span:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.open span:nth-child(3) {
+  transform: translateY(-9px) rotate(-45deg);
+}
+
+/* ── Mobile ── */
+@media (max-width: 768px) {
+  .hamburger {
+    display: flex;
+  }
+
+  .menu {
     position: fixed;
-    left: 10vw;
-}
+    top: 70px;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    background: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    padding: 20px 0 30px;
+    gap: 8px;
+    /* Oculto por defecto */
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-10px);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+  }
 
-.titolFulla:hover {
-    cursor: default;
-}
+  .menu--open {
+    opacity: 1;
+    pointer-events: all;
+    transform: translateY(0);
+  }
 
-.header {
-    position: 'fixed';
-    z-index: 1;
-}
+  .menuItem {
+    font-size: 1.3rem;
+    padding: 14px 30px;
+    width: 100%;
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
 
-.logo {
-    position: 'fixed';
-}
+  .menuItem:last-child {
+    border-bottom: none;
+  }
 
-.logo:hover {
-    cursor: pointer;
+  .titolFulla {
+    font-size: 1.1rem;
+  }
 }

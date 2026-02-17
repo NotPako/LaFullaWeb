@@ -5,7 +5,10 @@ import GigCarrousel from '@/components/GigCarrousel/GigCarrousel'
 export default function Landing() {
   return (
     <div className="landingStyle">
-      <GigCarrousel />
+      <div className="landing-overlay" />
+      <div className="landing-content">
+        <GigCarrousel />
+      </div>
     </div>
   )
 }
