@@ -1,49 +1,182 @@
-.gigStyle {
-  color: white;
-  width: auto;
-  height: auto;
-  font-size: 1.2rem;
-  z-index: 2;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+/* ── Fila de gig ── */
+.gig-row {
+  position: relative;
+  display: grid;
+  grid-template-columns: 40px 1fr auto;
   align-items: center;
-  text-align: center;
-  padding: 0 10px;
-  transition: color 0.3s ease, font-size 0.3s ease;
+  gap: 16px;
+  padding: 14px 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+  overflow: hidden;
+  transition: border-color 0.2s ease;
 }
 
-.tituloStyle {
-  font-size: 1.3em;
-  margin-bottom: 0.3rem;
+.gig-row:last-child {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
 }
 
-/* Hover solo en dispositivos que lo soporten */
+/* Efecto spotlight — pseudo-elemento que se revela en hover */
+.gig-spotlight {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 204, 0, 0.06) 0%,
+    rgba(255, 204, 0, 0.03) 60%,
+    transparent 100%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Hover (solo dispositivos con cursor) ── */
 @media (hover: hover) {
-  .gigStyle:hover {
+  .gig-row--clickable:hover {
+    border-color: rgba(255, 204, 0, 0.25);
     cursor: pointer;
-    color: #ffcc00;
-    font-size: 1.4rem;
   }
 
-  .highlight-text:hover {
-    color: grey;
-    font-weight: bold;
-    animation: highlight 1.5s infinite alternate;
+  .gig-row--clickable:hover .gig-spotlight {
+    opacity: 1;
+  }
+
+  .gig-row--clickable:hover .gig-index {
+    color: var(--accent, #ffcc00);
+  }
+
+  .gig-row--clickable:hover .gig-titulo {
+    color: #fff;
+  }
+
+  .gig-row--clickable:hover .gig-tickets-btn {
+    background: var(--accent, #ffcc00);
+    color: #000;
+    gap: 6px;
   }
 }
 
-.highlight-text {
-  color: grey;
+/* ── Número de orden ── */
+.gig-index {
+  font-family: var(--font-bebas), 'Bebas Neue', sans-serif;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.2);
+  letter-spacing: 1px;
+  transition: color 0.3s ease;
+  position: relative;
+  z-index: 1;
+  user-select: none;
+}
+
+/* ── Bloque de info ── */
+.gig-info {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  font-size: 0.85em;
+  gap: 3px;
+  position: relative;
+  z-index: 1;
+  min-width: 0; /* permite truncar texto */
 }
 
-@keyframes highlight {
-  0%   { color: white; text-shadow: 0 0 5px #fff, 0 0 10px #ff0, 0 0 15px #ff0; }
-  50%  { color: yellow; text-shadow: 0 0 10px #ff0, 0 0 20px #ff0, 0 0 30px #ff0; }
-  100% { color: white; text-shadow: 0 0 5px #fff, 0 0 10px #ff0, 0 0 15px #ff0; }
+.gig-titulo {
+  font-family: var(--font-bebas), 'Bebas Neue', sans-serif;
+  font-size: clamp(1rem, 2.5vw, 1.3rem);
+  color: rgba(255, 255, 255, 0.88);
+  letter-spacing: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: color 0.2s ease;
+  line-height: 1.1;
+}
+
+.gig-meta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.gig-fecha {
+  font-family: var(--font-geist-sans), sans-serif;
+  font-size: clamp(0.65rem, 1.5vw, 0.75rem);
+  color: rgba(255, 255, 255, 0.45);
+  text-transform: capitalize;
+  letter-spacing: 0.5px;
+}
+
+.gig-separator {
+  color: rgba(255, 255, 255, 0.2);
+  font-size: 0.6rem;
+}
+
+.gig-lugar {
+  font-family: var(--font-geist-sans), sans-serif;
+  font-size: clamp(0.65rem, 1.5vw, 0.75rem);
+  color: rgba(255, 204, 0, 0.6);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* ── CTA ── */
+.gig-cta {
+  position: relative;
+  z-index: 1;
+  flex-shrink: 0;
+}
+
+.gig-tickets-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-family: var(--font-geist-sans), sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--accent, #ffcc00);
+  border: 1px solid rgba(255, 204, 0, 0.4);
+  padding: 5px 10px;
+  border-radius: 2px;
+  transition: background 0.2s ease, color 0.2s ease, gap 0.2s ease;
+  white-space: nowrap;
+}
+
+.gig-soon {
+  font-family: var(--font-geist-sans), sans-serif;
+  font-size: 0.65rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.2);
+}
+
+/* ── Mobile ── */
+@media (max-width: 480px) {
+  .gig-row {
+    grid-template-columns: 30px 1fr auto;
+    gap: 10px;
+    padding: 12px 8px;
+  }
+
+  .gig-index {
+    font-size: 0.85rem;
+  }
+
+  .gig-tickets-btn {
+    font-size: 0.6rem;
+    padding: 4px 8px;
+    letter-spacing: 1px;
+  }
+
+  /* En pantallas muy pequeñas, ocultar el separador y poner fecha y lugar en líneas separadas */
+  .gig-meta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1px;
+  }
+
+  .gig-separator {
+    display: none;
+  }
 }

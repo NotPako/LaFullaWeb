@@ -1,63 +1,83 @@
-.carousel-container {
-  position: absolute;
-  z-index: 2;
-
-  /* Desktop */
-  width: 50%;
-  max-width: 600px;
-  top: 8rem;
-  right: 22rem;
-  padding: 20px;
+.giglist-wrapper {
+  width: 100%;
+  padding: 0 8px;
 }
 
-.carousel-title {
-  color: #ffcc00;
-  font-size: 1.5vw;
-  cursor: default;
-  text-align: center;
-  margin-bottom: 2rem;
-  border-bottom: 2px solid #ffcc00;
-}
-
-.carousel-slide {
+/* ── Cabecera ── */
+.giglist-header {
   display: flex;
-  justify-content: center;
   align-items: center;
-  min-height: 150px;
-  font-weight: bold;
+  gap: 16px;
+  margin-bottom: 20px;
 }
 
-/* ── Tablet ── */
-@media (max-width: 1024px) {
-  .carousel-container {
-    width: 60%;
-    right: 5%;
-    top: 6rem;
-  }
+.giglist-label {
+  font-family: var(--font-bebas), 'Bebas Neue', sans-serif;
+  font-size: clamp(1rem, 3vw, 1.4rem);
+  color: var(--accent, #ffcc00);
+  letter-spacing: 4px;
+  white-space: nowrap;
+  text-transform: uppercase;
+}
 
-  .carousel-title {
-    font-size: 1.8vw;
-  }
+.giglist-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, rgba(255, 204, 0, 0.5), transparent);
+}
+
+/* ── Lista ── */
+.giglist {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Skeleton loader ── */
+.giglist-loading {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.giglist-skeleton {
+  height: 52px;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.04) 0%,
+    rgba(255, 255, 255, 0.08) 50%,
+    rgba(255, 255, 255, 0.04) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.4s ease-in-out infinite;
+  border-radius: 2px;
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* ── Empty state ── */
+.giglist-empty {
+  font-family: var(--font-geist-sans), sans-serif;
+  color: rgba(255, 255, 255, 0.35);
+  font-size: 0.85rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 20px 0;
 }
 
 /* ── Mobile ── */
 @media (max-width: 768px) {
-  .carousel-container {
-    position: relative;
-    top: unset;
-    right: unset;
-    width: 90%;
-    max-width: 100%;
-    margin: 0 auto;
-    padding: 16px;
+  .giglist-wrapper {
+    padding: 0;
   }
 
-  .carousel-title {
-    font-size: 1.2rem;
-    margin-bottom: 1rem;
-  }
-
-  .carousel-slide {
-    min-height: 120px;
+  .giglist-label {
+    font-size: 1rem;
+    letter-spacing: 3px;
   }
 }

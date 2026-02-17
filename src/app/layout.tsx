@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Bebas_Neue } from "next/font/google";
 import "../styles/globals.css";
-
-
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -14,28 +12,26 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const bebasNeue = Bebas_Neue({
+  variable: "--font-bebas",
+  subsets: ["latin"],
+  weight: "400",
+});
+
 export const metadata: Metadata = {
   title: "La Fulla",
   description: "Lloc web de La Fulla grup",
   icons: {
-    icon: [
-      {
-        url:"/media/LogoGROCFULLA.png"
-      }
-    ]
-  }
+    icon: [{ url: "/media/LogoGROCFULLA.png" }],
+  },
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+    <html lang="ca">
+      <body className={`${geistSans.variable} ${geistMono.variable} ${bebasNeue.variable} antialiased`}>
         {children}
       </body>
     </html>
