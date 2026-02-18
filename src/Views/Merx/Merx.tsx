@@ -1,5 +1,5 @@
 'use client';
-import React from 'react';
+import React, { useState } from 'react';
 import './Merx.css';
 import { Carousel, Form, Input, Select, Button, message } from 'antd';
 
@@ -17,35 +17,50 @@ interface FormValues {
 export default function Merx() {
   const [form] = Form.useForm();
   const [messageApi, contextHolder] = message.useMessage();
+  const [sending, setSending] = useState(false);
 
-  const onFinish = (values: FormValues) => {
-    console.log('Form data:', values);
-    messageApi.open({
-      type: 'success',
-      content: "S'ha enviat la teva comanda correctament! Rebràs un correu de confirmació aviat.",
-    });
-    form.resetFields();
+  const onFinish = async (values: FormValues) => {
+    setSending(true);
+    try {
+      const res = await fetch("/api/merx", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(values),
+      });
+
+      if (res.ok) {
+        messageApi.open({
+          type: "success",
+          content: "S'ha enviat la teva comanda correctament! Rebràs un correu de confirmació aviat.",
+        });
+        form.resetFields();
+      } else {
+        messageApi.open({
+          type: "error",
+          content: "Hi ha hagut un error. Torna-ho a intentar.",
+        });
+      }
+    } catch {
+      messageApi.open({
+        type: "error",
+        content: "Hi ha hagut un error. Torna-ho a intentar.",
+      });
+    } finally {
+      setSending(false);
+    }
   };
 
   return (
     <section className="merxStyle">
       {contextHolder}
-
-      {/* Overlay oscuro sobre la imagen de fondo */}
       <div className="merx-overlay" />
-
       <div className="merx-inner">
-
-        {/* Cabecera */}
         <div className="merx-header">
           <h2 className="merx-title">Merxandatge</h2>
           <p className="merx-subtitle">Porta La Fulla amb tu</p>
         </div>
 
-        {/* Contenido principal */}
         <div className="merx-content">
-
-          {/* Carrusel */}
           <div className="carouselContainer">
             <Carousel autoplay arrows>
               {['merxan1', 'merxan2', 'merxan3', 'merxan4'].map((img, idx) => (
@@ -60,13 +75,11 @@ export default function Merx() {
             </Carousel>
           </div>
 
-          {/* Formulario */}
           <div className="formContainer">
             <h3 className="form-title">Fes la teva comanda</h3>
             <p className="form-subtitle">Escull el producte, talla i introdueix les teves dades</p>
 
             <Form form={form} layout="vertical" onFinish={onFinish} className="merx-form">
-
               <Form.Item label="Producte" name="product" rules={[{ required: true, message: 'Selecciona un producte' }]}>
                 <Select placeholder="Selecciona un producte">
                   <Option value="samarreta-nucs">Samarreta Nucs de Vidre — 15€</Option>
@@ -97,11 +110,16 @@ export default function Merx() {
               </Form.Item>
 
               <Form.Item>
-                <Button htmlType="submit" className="submitButton" block>
-                  Enviar comanda
+                <Button
+                  htmlType="submit"
+                  className="submitButton"
+                  block
+                  loading={sending}
+                  disabled={sending}
+                >
+                  {sending ? "Enviant..." : "Enviar comanda"}
                 </Button>
               </Form.Item>
-
             </Form>
           </div>
         </div>

@@ -13,6 +13,11 @@ interface GigProps {
 const Gig: React.FC<GigProps> = ({ titulo, fecha, lugar, url, index, onClick }) => {
   const hasTickets = !!url;
 
+  function navigateToTickets(e: React.MouseEvent) {
+    e.stopPropagation(); 
+    if (url) window.open(url, "_blank", "noopener,noreferrer");
+  }
+
   return (
     <li
       className={`gig-row ${hasTickets ? 'gig-row--clickable' : ''}`}
@@ -37,7 +42,7 @@ const Gig: React.FC<GigProps> = ({ titulo, fecha, lugar, url, index, onClick }) 
       {/* CTA entrades */}
       <div className="gig-cta">
         {hasTickets ? (
-          <span className="gig-tickets-btn">
+          <span className="gig-tickets-btn" onClick={navigateToTickets}>
             Entrades
             <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
               <path d="M2.5 9.5L9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
