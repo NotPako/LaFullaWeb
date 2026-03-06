@@ -13,7 +13,7 @@ interface HeaderProps {
   quisomRef?: React.RefObject<HTMLDivElement | null>;
 }
 
-export default function Header({ landingRef, gigsRef, discografiaRef, contacteRef, quisomRef }: HeaderProps) {
+export default function Header({ landingRef, gigsRef, discografiaRef, contacteRef}: HeaderProps) {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const scrollTo = (ref: React.RefObject<HTMLDivElement | null>) => {
