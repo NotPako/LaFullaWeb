@@ -81,3 +81,30 @@
     letter-spacing: 3px;
   }
 }
+
+.giglist-scroll {
+  max-height: calc(52px * 5); /* 4 gigs visibles */
+  overflow-y: auto;
+  scrollbar-width: 0;
+}
+
+/* Scrollbar estilizada (opcional) */
+.giglist-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+
+.giglist-scroll::-webkit-scrollbar-thumb {
+  background: rgba(255, 204, 0, 0.4);
+  border-radius: 4px;
+}
+
+
+.giglist-scroll::after {
+  content: "";
+  position: sticky;
+  bottom: 0;
+  display: block;
+  height: 20px;
+  background: linear-gradient(to bottom, transparent, #000);
+  pointer-events: none;
+}

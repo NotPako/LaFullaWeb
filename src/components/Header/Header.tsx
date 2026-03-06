@@ -10,9 +10,10 @@ interface HeaderProps {
   merxRef: React.RefObject<HTMLDivElement | null>;
   discografiaRef: React.RefObject<HTMLDivElement | null>;
   contacteRef: React.RefObject<HTMLDivElement | null>;
+  quisomRef?: React.RefObject<HTMLDivElement | null>;
 }
 
-export default function Header({ landingRef, gigsRef, discografiaRef, contacteRef }: HeaderProps) {
+export default function Header({ landingRef, gigsRef, discografiaRef, contacteRef, quisomRef }: HeaderProps) {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const scrollTo = (ref: React.RefObject<HTMLDivElement | null>) => {
@@ -49,6 +50,9 @@ export default function Header({ landingRef, gigsRef, discografiaRef, contacteRe
 
       {/* Menú de navegación */}
       <nav className={`menu ${menuOpen ? "menu--open" : ""}`}>
+        <div className="menuItem">
+          <h1>Qui som?</h1>
+        </div>
         <div className="menuItem" onClick={() => scrollTo(gigsRef)}>
           <h1>Merxandatge</h1>
         </div>

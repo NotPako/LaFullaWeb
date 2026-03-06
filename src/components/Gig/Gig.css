@@ -15,6 +15,79 @@
   border-bottom: 1px solid rgba(255, 255, 255, 0.07);
 }
 
+/* ── Estado: concierto pasado ── */
+.gig-row--past {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.gig-row--past .gig-index {
+  color: rgba(255, 255, 255, 0.12);
+}
+
+.gig-row--past .gig-titulo {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.gig-row--past .gig-lugar {
+  color: rgba(255, 204, 0, 0.25);
+}
+
+/* ── Título con posición relativa para el rayajo ── */
+.gig-titulo {
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  font-family: var(--font-bebas), 'Bebas Neue', sans-serif;
+  font-size: clamp(1rem, 2.5vw, 1.3rem);
+  color: rgba(255, 255, 255, 0.88);
+  letter-spacing: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: color 0.2s ease;
+  line-height: 1.1;
+}
+
+/* ── SVG rayajo ── */
+.gig-scratch {
+  display: block;
+  width: 100%;
+  height: 10px;
+  margin-top: -4px;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.gig-scratch-path {
+  stroke-dasharray: 500;
+  stroke-dashoffset: 500;
+  animation: scratch-draw 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.15s forwards;
+}
+
+.gig-scratch-path--shadow {
+  animation-delay: 0.2s;
+  animation-duration: 0.45s;
+}
+
+@keyframes scratch-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* ── Label "Passat" ── */
+.gig-past-label {
+  font-family: var(--font-geist-sans), sans-serif;
+  font-size: 0.65rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(229, 53, 53, 0.45);
+  border: 1px solid rgba(229, 53, 53, 0.2);
+  padding: 4px 8px;
+  border-radius: 2px;
+}
+
 /* Efecto spotlight — pseudo-elemento que se revela en hover */
 .gig-spotlight {
   position: absolute;
@@ -76,19 +149,7 @@
   gap: 3px;
   position: relative;
   z-index: 1;
-  min-width: 0; /* permite truncar texto */
-}
-
-.gig-titulo {
-  font-family: var(--font-bebas), 'Bebas Neue', sans-serif;
-  font-size: clamp(1rem, 2.5vw, 1.3rem);
-  color: rgba(255, 255, 255, 0.88);
-  letter-spacing: 2px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  transition: color 0.2s ease;
-  line-height: 1.1;
+  min-width: 0;
 }
 
 .gig-meta {
@@ -169,7 +230,6 @@
     letter-spacing: 1px;
   }
 
-  /* En pantallas muy pequeñas, ocultar el separador y poner fecha y lugar en líneas separadas */
   .gig-meta {
     flex-direction: column;
     align-items: flex-start;
