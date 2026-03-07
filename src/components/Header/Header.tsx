@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import '@/styles/styles.css';
 import '@/components/Header/Header.css';
 
@@ -15,14 +15,23 @@ interface HeaderProps {
 
 export default function Header({ landingRef, gigsRef, discografiaRef, contacteRef}: HeaderProps) {
   const [menuOpen, setMenuOpen] = useState(false);
+   const [scrolled, setScrolled] = useState(false); 
+
+    useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 10);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const scrollTo = (ref: React.RefObject<HTMLDivElement | null>) => {
     ref.current?.scrollIntoView({ behavior: "smooth", block: "start" });
     setMenuOpen(false);
   };
 
+  
+
   return (
-    <div className="header">
+    <div className={`header ${scrolled ? "header--scrolled" : ""}`}>
       <div className="titolFulla">
         <h2>LA FULLA</h2>
       </div>
