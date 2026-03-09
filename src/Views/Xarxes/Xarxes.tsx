@@ -58,7 +58,6 @@ const XARXES = [
 ];
 
 export default function Xarxes() {
-  const [hovered, setHovered] = useState<string | null>(null);
 
   return (
     <section className="xarxes-section">
@@ -78,8 +77,6 @@ export default function Xarxes() {
               target="_blank"
               rel="noopener noreferrer"
               className="xarxa-card"
-              onMouseEnter={() => setHovered(xarxa.nom)}
-              onMouseLeave={() => setHovered(null)}
               style={{
                 '--xarxa-color': xarxa.color,
               } as React.CSSProperties}
