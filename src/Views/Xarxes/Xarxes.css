@@ -159,7 +159,7 @@
   color: inherit;
 }
 
-/* ── Tablet: 3 + 2 ── */
+/* ── Tablet: 3 columnas ── */
 @media (max-width: 768px) {
   .xarxes-inner {
     padding: 80px 24px 60px;
@@ -168,27 +168,23 @@
 
   .xarxes-grid {
     grid-template-columns: repeat(3, 1fr);
+    justify-items: stretch;
   }
 
-  /* Últimas 2 tarjetas centradas */
+  /* Resetear cualquier posicionamiento manual */
   .xarxa-card:nth-child(4),
   .xarxa-card:nth-child(5) {
-    grid-column: span 1;
+    grid-column: auto;
+    margin: 0;
   }
 
-  .xarxes-grid {
-    grid-template-columns: repeat(3, 1fr);
-    justify-items: center;
-  }
-
+  /* Las últimas 2 se centran ocupando las columnas 1 y 2 de la última fila */
   .xarxa-card:nth-child(4) {
     grid-column: 1 / 2;
-    margin-left: auto;
   }
 
   .xarxa-card:nth-child(5) {
     grid-column: 2 / 3;
-    margin-right: auto;
   }
 }
 
@@ -198,14 +194,21 @@
     grid-template-columns: repeat(2, 1fr);
   }
 
+  /* Resetear los grid-column del breakpoint anterior */
+  .xarxa-card:nth-child(4) {
+    grid-column: auto;
+  }
+
   .xarxa-card:nth-child(5) {
-    grid-column: 1 / 3;
+    grid-column: 1 / 3;    /* ocupa las 2 columnas, centrado */
     max-width: 50%;
     margin: 0 auto;
+    width: 100%;
   }
 
   .xarxa-card {
     padding: 24px 12px 20px;
+    width: 100%;            /* todas las cards ocupan el 100% de su columna */
   }
 
   .xarxa-icon {
