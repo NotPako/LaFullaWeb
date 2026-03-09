@@ -37,7 +37,7 @@
   position: relative;
   z-index: 2;
   width: 100%;
-  padding: 0 clamp(20px, 6vw, 80px) clamp(40px, 6vh, 80px);
+  padding: 90px clamp(20px, 6vw, 80px) clamp(40px, 6vh, 80px);
 }
 
 /* Mobile */
