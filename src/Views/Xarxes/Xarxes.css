@@ -1,0 +1,215 @@
+.xarxes-section {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: #000;
+}
+
+/* ── Fondo animado — rejilla de puntos ── */
+.xarxes-bg {
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle, rgba(255, 204, 0, 0.08) 1px, transparent 1px);
+  background-size: 40px 40px;
+  z-index: 0;
+  mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 40%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 40%, transparent 100%);
+}
+
+/* ── Interior ── */
+.xarxes-inner {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 900px;
+  padding: 100px 40px 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 60px;
+}
+
+/* ── Cabecera ── */
+.xarxes-header {
+  text-align: center;
+}
+
+.xarxes-title {
+  font-family: var(--font-bebas), 'Bebas Neue', sans-serif;
+  font-size: clamp(3rem, 8vw, 6rem);
+  color: var(--accent, #ffcc00);
+  letter-spacing: 6px;
+  line-height: 1;
+  text-shadow: 0 0 60px rgba(255, 204, 0, 0.2);
+}
+
+.xarxes-subtitle {
+  font-family: var(--font-geist-sans), sans-serif;
+  color: rgba(255, 255, 255, 0.4);
+  font-size: clamp(0.75rem, 2vw, 0.9rem);
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  margin-top: 8px;
+}
+
+/* ── Grid de tarjetas ── */
+.xarxes-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+  width: 100%;
+}
+
+/* ── Tarjeta individual ── */
+.xarxa-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 32px 16px 24px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 4px;
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.03);
+  overflow: hidden;
+  transition:
+    color 0.3s ease,
+    border-color 0.3s ease,
+    transform 0.3s ease;
+}
+
+/* Glow de color de la red — se revela en hover */
+.xarxa-glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 80% 60% at 50% 120%,
+    color-mix(in srgb, var(--xarxa-color) 20%, transparent),
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@media (hover: hover) {
+  .xarxa-card:hover {
+    color: var(--xarxa-color);
+    border-color: color-mix(in srgb, var(--xarxa-color) 40%, transparent);
+    transform: translateY(-4px);
+  }
+
+  .xarxa-card:hover .xarxa-glow {
+    opacity: 1;
+  }
+
+  .xarxa-card:hover .xarxa-arrow {
+    opacity: 1;
+    transform: translate(2px, -2px);
+  }
+
+  .xarxa-card:hover .xarxa-icon {
+    color: var(--xarxa-color);
+  }
+}
+
+/* ── Icono ── */
+.xarxa-icon {
+  position: relative;
+  z-index: 1;
+  width: 40px;
+  height: 40px;
+  color: rgba(255, 255, 255, 0.5);
+  transition: color 0.3s ease;
+}
+
+.xarxa-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* ── Nombre ── */
+.xarxa-nom {
+  position: relative;
+  z-index: 1;
+  font-family: var(--font-bebas), 'Bebas Neue', sans-serif;
+  font-size: 1rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+/* ── Flecha ── */
+.xarxa-arrow {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  z-index: 1;
+  font-size: 0.75rem;
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  color: inherit;
+}
+
+/* ── Tablet: 3 + 2 ── */
+@media (max-width: 768px) {
+  .xarxes-inner {
+    padding: 80px 24px 60px;
+    gap: 40px;
+  }
+
+  .xarxes-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  /* Últimas 2 tarjetas centradas */
+  .xarxa-card:nth-child(4),
+  .xarxa-card:nth-child(5) {
+    grid-column: span 1;
+  }
+
+  .xarxes-grid {
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+  }
+
+  .xarxa-card:nth-child(4) {
+    grid-column: 1 / 2;
+    margin-left: auto;
+  }
+
+  .xarxa-card:nth-child(5) {
+    grid-column: 2 / 3;
+    margin-right: auto;
+  }
+}
+
+/* ── Mobile: 2 columnas ── */
+@media (max-width: 480px) {
+  .xarxes-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .xarxa-card:nth-child(5) {
+    grid-column: 1 / 3;
+    max-width: 50%;
+    margin: 0 auto;
+  }
+
+  .xarxa-card {
+    padding: 24px 12px 20px;
+  }
+
+  .xarxa-icon {
+    width: 32px;
+    height: 32px;
+  }
+}

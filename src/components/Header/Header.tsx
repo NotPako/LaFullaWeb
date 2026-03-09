@@ -11,9 +11,10 @@ interface HeaderProps {
   discografiaRef: React.RefObject<HTMLDivElement | null>;
   contacteRef: React.RefObject<HTMLDivElement | null>;
   quisomRef?: React.RefObject<HTMLDivElement | null>;
+  xarxesRef:  React.RefObject<HTMLDivElement | null>;
 }
 
-export default function Header({ landingRef, gigsRef, discografiaRef, contacteRef}: HeaderProps) {
+export default function Header({ landingRef, gigsRef, discografiaRef, contacteRef, xarxesRef}: HeaderProps) {
   const [menuOpen, setMenuOpen] = useState(false);
    const [scrolled, setScrolled] = useState(false); 
 
@@ -70,6 +71,9 @@ export default function Header({ landingRef, gigsRef, discografiaRef, contacteRe
         </div>
         <div className="menuItem" onClick={() => scrollTo(discografiaRef)}>
           <h1>Discografia</h1>
+        </div>
+        <div className="menuItem" onClick={() => scrollTo(xarxesRef)}>
+          <h1>Xarxes</h1>
         </div>
       </nav>
     </div>
