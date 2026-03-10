@@ -9,9 +9,9 @@ export default function Landing() {
       <div className="landing-overlay" />
       <div className="landing-content">
         <NewRelease
-          title="POTSER NO HAURIA PASSAT"
+          title="PLACA PETRI"
           subtitle="Nou llançament"
-          youtubeId="bGO9RVjHP9Q"
+          youtubeId="v=5rbL4JOlDyg"
           spotifyId="78yabm3lvNIVAGXzrESIiZ?si=d203e03c08f14378"
           spotifyType="track"
         />
