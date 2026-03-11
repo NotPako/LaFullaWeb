@@ -12,7 +12,8 @@ export default function Landing() {
           title="PLACA PETRI"
           subtitle="Nou llançament"
           youtubeId="v=5rbL4JOlDyg"
-          spotifyId="78yabm3lvNIVAGXzrESIiZ?si=d203e03c08f14378"
+          spotifyId=""
+          spotifyAvailableAt="00.00 del 13 de Març"
           spotifyType="track"
         />
         <GigCarrousel />
