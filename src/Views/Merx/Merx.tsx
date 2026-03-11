@@ -78,7 +78,9 @@ export default function Merx() {
           <div className="formContainer">
             <h3 className="form-title">Fes la teva comanda</h3>
             <p className="form-subtitle">Escull el producte, talla i introdueix les teves dades.</p>
-            <p className="form-subtitle">Es ficarem en contacte amb tú per gestionar l'enviament i la forma de pagament</p>
+            <p className="form-subtitle">
+                {"Es ficarem en contacte amb tú per gestionar l'enviament i la forma de pagament"}
+            </p>
 
             <Form form={form} layout="vertical" onFinish={onFinish} className="merx-form">
               <Form.Item label="Producte" name="product" rules={[{ required: true, message: 'Selecciona un producte' }]}>
