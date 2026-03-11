@@ -75,10 +75,10 @@ export default function NewRelease({
             <svg className="nr-spotify-soon-icon" viewBox="0 0 24 24" fill="currentColor">
               <path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm4.586 14.424a.622.622 0 01-.857.207c-2.348-1.435-5.304-1.76-8.785-.964a.623.623 0 01-.277-1.215c3.809-.87 7.077-.496 9.712 1.115.294.18.387.563.207.857zm1.223-2.722a.78.78 0 01-1.072.257c-2.687-1.652-6.785-2.131-9.965-1.166a.78.78 0 01-.973-.519.781.781 0 01.52-.972c3.632-1.102 8.147-.568 11.233 1.328a.78.78 0 01.257 1.072zm.105-2.835C14.692 8.95 9.375 8.775 6.297 9.71a.937.937 0 11-.543-1.794c3.532-1.072 9.404-.865 13.115 1.338a.937.937 0 01-.955 1.613z"/>
             </svg>
-            <p className="nr-spotify-soon-text">
-              El tema estarà disponible a partir de les{' '}
-              <span className="nr-spotify-soon-time">{spotifyAvailableAt}</span>{' '}
-              a Spotify
+           <p className="nr-spotify-soon-text">
+                El tema estar&apos; disponible a partir de les{' '}
+                <span className="nr-spotify-soon-time">{spotifyAvailableAt}</span>{' '}
+                 a Spotify
             </p>
           </div>
         )}
