@@ -9,11 +9,11 @@ export default function Landing() {
       <div className="landing-overlay" />
       <div className="landing-content">
         <NewRelease
-          title="PLACA PETRI"
+          title="NO NE CABEN MÉS"
           subtitle="Nou llançament"
-          youtubeId="5rbL4JOlDyg"
-          spotifyId="1wX9qtssaM6x66Wc3vuVgb"
-          spotifyAvailableAt="00.00 del 13 de Març"
+          youtubeId="DSEOiro_eRo"
+          spotifyId="671T4hZNUgqzeNTmjNZo1B"
+          spotifyAvailableAt=""
           spotifyType="track"
         />
         <GigCarrousel />
