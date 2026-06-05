@@ -28,6 +28,11 @@
   object-position: center center;
   z-index: 0;
   pointer-events: none;
+  /* Disimula la baja calidad: blur sutil + ajustes de color */
+  filter: blur(2px) saturate(1.1) contrast(1.05) brightness(0.9);
+  /* Escala extra para que el blur no muestre bordes */
+  transform: scale(1.06);
+  transform-origin: center center;
 }
 
 /* Overlay: más oscuro en la mitad inferior donde va la lista */
@@ -36,10 +41,10 @@
   inset: 0;
   background: linear-gradient(
     to bottom,
-    rgba(0, 0, 0, 0.1) 0%,
-    rgba(0, 0, 0, 0.3) 40%,
-    rgba(0, 0, 0, 0.82) 70%,
-    rgba(0, 0, 0, 0.95) 100%
+    rgba(0, 0, 0, 0.25) 0%,
+    rgba(0, 0, 0, 0.4) 40%,
+    rgba(0, 0, 0, 0.85) 70%,
+    rgba(0, 0, 0, 0.96) 100%
   );
   z-index: 1;
 }
