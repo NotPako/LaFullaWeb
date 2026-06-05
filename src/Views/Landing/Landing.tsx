@@ -9,6 +9,17 @@ export default function Landing() {
 
   return (
     <div className="landingStyle">
+      <video
+        className="landing-video"
+        src="/media/HeroClipPresentacio.mp4"
+        poster="/media/654A5957.jpg"
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="auto"
+        aria-hidden="true"
+      />
       <div className="landing-overlay" />
       <div className="landing-content">
         <NewRelease {...release} />

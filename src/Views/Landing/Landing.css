@@ -7,7 +7,7 @@
   align-items: flex-end;
 }
 
-/* Imagen de fondo */
+/* Imagen de fondo (fallback / poster mientras carga el video) */
 .landingStyle::before {
   content: '';
   position: absolute;
@@ -16,6 +16,18 @@
   background-size: cover;
   background-position: center center;
   z-index: 0;
+}
+
+/* Video de fondo */
+.landing-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  z-index: 0;
+  pointer-events: none;
 }
 
 /* Overlay: más oscuro en la mitad inferior donde va la lista */
@@ -45,5 +57,15 @@
   .landingStyle::before {
     background-position: 30% center;
     background-attachment: scroll;
+  }
+  .landing-video {
+    object-position: 30% center;
+  }
+}
+
+/* Respeta la preferencia de "menos animación" del sistema */
+@media (prefers-reduced-motion: reduce) {
+  .landing-video {
+    display: none;
   }
 }
