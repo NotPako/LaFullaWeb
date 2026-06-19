@@ -9,6 +9,7 @@ const spotifyItems = [
   { type: "track", id: "78yabm3lvNIVAGXzrESIiZ" },
   { type: "track", id: "4JTdkqI8dn80qYXh8luiGU" },
   { type: "playlist", id: "37i9dQZF1E4x5GhDbWfThD" },
+  { type: "album", id: "2yAeJUZv7ggin1DJ40fsil" }
 ] as const;
 
 function useBreakpoint() {
