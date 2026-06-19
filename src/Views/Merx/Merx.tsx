@@ -63,7 +63,7 @@ export default function Merx() {
         <div className="merx-content">
           <div className="carouselContainer">
             <Carousel autoplay arrows>
-              {['merxan1', 'merxan2', 'merxan3', 'merxan4'].map((img, idx) => (
+              {['merxan1', 'merxan2', 'merxan3', 'merxan4', 'merxan5', 'merxan6'].map((img, idx) => (
                 <div key={idx} className="carousel-slide-merx">
                   <img
                     src={`/media/${img}.jpeg`}
@@ -88,6 +88,7 @@ export default function Merx() {
                   <Option value="samarreta-nucs">Samarreta Nucs de Vidre — 15€</Option>
                   <Option value="dessuadora-nucs">Dessuadora Nucs de Vidre — 20€</Option>
                   <Option value="samarreta-pnhp">Samarreta PNHP — 20€</Option>
+                  <Option value="samarreta-pnhp">Samarreta Ment En Guerra — 15€</Option>
                   <Option value="disc-fisic">Disc físic — 8€</Option>
                 </Select>
               </Form.Item>
