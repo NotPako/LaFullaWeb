@@ -10,6 +10,7 @@ interface GigType {
   lugar: string;
   url: string;
   rawDate: Date;
+  isPast: boolean;
 }
 
 interface GoogleEvent {
@@ -45,8 +46,13 @@ const GigCarrousel: React.FC = () => {
         if (!res.ok) throw new Error(`Error: ${res.status}`);
         const data: { items: GoogleEvent[] } = await res.json();
 
+        const startOfToday = new Date();
+        startOfToday.setHours(0, 0, 0, 0);
+
         const formatted: GigType[] = data.items.map((event) => {
           const rawDate = new Date(event.start.dateTime ?? event.start.date!);
+          // Comparamos por día: un concierto que es hoy todavía cuenta como próximo
+          const eventDay = new Date(rawDate.getFullYear(), rawDate.getMonth(), rawDate.getDate());
           return {
             titulo: event.summary ?? "Concert",
             fecha: rawDate.toLocaleDateString("ca-ES", {
@@ -58,10 +64,19 @@ const GigCarrousel: React.FC = () => {
             lugar: extractCity(event.location),
             url: event.description?.startsWith("http") ? event.description : "",
             rawDate,
+            isPast: eventDay < startOfToday,
           };
-        }).sort((a, b) => a.rawDate.getTime() - b.rawDate.getTime());;
+        });
 
-        setGigs(formatted);
+        // Próximos arriba (el más inminente primero), pasados abajo (el más reciente primero)
+        const upcoming = formatted
+          .filter((gig) => !gig.isPast)
+          .sort((a, b) => a.rawDate.getTime() - b.rawDate.getTime());
+        const past = formatted
+          .filter((gig) => gig.isPast)
+          .sort((a, b) => b.rawDate.getTime() - a.rawDate.getTime());
+
+        setGigs([...upcoming, ...past]);
       } catch (error) {
         console.error("Error carregant concerts:", error);
       } finally {
