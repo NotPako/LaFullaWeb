@@ -66,12 +66,14 @@
   margin-top: 8px;
 }
 
-/* ── Contenido: carousel + form lado a lado ── */
+/* ── Contenido: carousel + nombre y precio debajo ── */
 .merx-content {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 40px;
-  align-items: start;
+  width: 100%;
+  max-width: 760px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 /* ── Carrusel ── */
@@ -91,124 +93,63 @@
 
 .carouselImage {
   width: 100%;
-  height: 420px;
+  height: 480px;
   object-fit: cover;
   display: block;
 }
 
-/* ── Formulario ── */
-.formContainer {
-  background: var(--glass-bg);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid var(--glass-border);
-  border-radius: var(--radius);
-  padding: 36px 32px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+/* ── Nombre y precio del producto visible ── */
+.merx-product {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 0 4px 12px;
+  border-bottom: 1px solid var(--glass-border);
+  animation: merx-product-in 0.4s ease;
 }
 
-.form-title {
+.merx-product-name {
   font-family: var(--font-display, 'Bebas Neue', sans-serif);
-  font-size: clamp(1.6rem, 3vw, 2.2rem);
-  color: var(--accent);
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  color: #fff;
   letter-spacing: 3px;
-  margin-bottom: 4px;
+  line-height: 1.1;
 }
 
-.form-subtitle {
+.merx-product-price {
+  font-family: var(--font-display, 'Bebas Neue', sans-serif);
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  color: var(--accent);
+  letter-spacing: 2px;
+  white-space: nowrap;
+}
+
+.merx-availability {
   font-family: var(--font-body, 'Barlow', sans-serif);
-  color: rgba(255, 255, 255, 0.5);
-  font-size: 0.85rem;
-  letter-spacing: 1px;
-  margin-bottom: 28px;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: clamp(0.8rem, 2vw, 0.95rem);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  text-align: center;
+  margin: 4px 0 0;
 }
 
-/* ── Labels de Ant Design ── */
-.merx-form .ant-form-item-label > label {
-  color: rgba(255, 255, 255, 0.85) !important;
-  font-family: var(--font-body, 'Barlow', sans-serif) !important;
-  font-size: 0.8rem !important;
-  letter-spacing: 2px !important;
-  text-transform: uppercase !important;
-  font-weight: 600 !important;
+@keyframes merx-product-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-/* ── Inputs de Ant Design ── */
-.merx-form .ant-input,
-.merx-form .ant-input-affix-wrapper,
-.merx-form .ant-select-selector,
-.merx-form .ant-input-textarea textarea {
-  background-color: rgba(255, 255, 255, 0.06) !important;
-  border: 1px solid rgba(255, 255, 255, 0.15) !important;
-  border-radius: var(--radius) !important;
-  color: #fff !important;
-  font-family: var(--font-body, 'Barlow', sans-serif) !important;
-  transition: border-color 0.2s ease !important;
-}
-
-.merx-form .ant-input:focus,
-.merx-form .ant-select-selector:focus,
-.merx-form .ant-input-focused,
-.merx-form .ant-select-focused .ant-select-selector {
-  border-color: var(--accent) !important;
-  box-shadow: 0 0 0 2px rgba(255, 204, 0, 0.15) !important;
-}
-
-.merx-form .ant-input::placeholder,
-.merx-form .ant-select-selection-placeholder {
-  color: rgba(255, 255, 255, 0.3) !important;
-}
-
-.merx-form .ant-select-arrow {
-  color: rgba(255, 255, 255, 0.4) !important;
-}
-
-/* Dropdown del Select */
-.merx-form .ant-select-dropdown {
-  background: #1a1a1a !important;
-  border: 1px solid var(--glass-border) !important;
-}
-
-.merx-form .ant-select-item {
-  color: #fff !important;
-  font-family: var(--font-body, 'Barlow', sans-serif) !important;
-}
-
-.merx-form .ant-select-item-option-active,
-.merx-form .ant-select-item-option-selected {
-  background: rgba(255, 204, 0, 0.15) !important;
-  color: var(--accent) !important;
-}
-
-/* Mensajes de error */
-.merx-form .ant-form-item-explain-error {
-  color: #ff6b6b !important;
-  font-size: 0.78rem !important;
-  font-family: var(--font-body, 'Barlow', sans-serif) !important;
-}
-
-/* ── Botón submit ── */
-.submitButton {
-  background-color: var(--accent) !important;
-  border: none !important;
-  color: #000 !important;
-  font-family: var(--font-display, 'Bebas Neue', sans-serif) !important;
-  font-size: 1.2rem !important;
-  letter-spacing: 3px !important;
-  height: 48px !important;
-  border-radius: var(--radius) !important;
-  transition: background-color 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease !important;
-  box-shadow: 0 4px 20px rgba(255, 204, 0, 0.25) !important;
-}
-
-.submitButton:hover {
-  background-color: #e6b800 !important;
-  box-shadow: 0 6px 28px rgba(255, 204, 0, 0.45) !important;
-  transform: translateY(-1px) !important;
-}
-
-.submitButton:active {
-  transform: translateY(0) !important;
+@media (prefers-reduced-motion: reduce) {
+  .merx-product {
+    animation: none;
+  }
 }
 
 /* ── Tablet ── */
@@ -218,16 +159,8 @@
     gap: 36px;
   }
 
-  .merx-content {
-    gap: 28px;
-  }
-
   .carouselImage {
-    height: 340px;
-  }
-
-  .formContainer {
-    padding: 28px 24px;
+    height: 400px;
   }
 }
 
@@ -242,18 +175,8 @@
     gap: 28px;
   }
 
-  /* En móvil: carousel arriba, form abajo */
-  .merx-content {
-    grid-template-columns: 1fr;
-    gap: 24px;
-  }
-
   .carouselImage {
-    height: 260px;
-  }
-
-  .formContainer {
-    padding: 24px 18px;
+    height: 320px;
   }
 
   .merx-title {
@@ -263,20 +186,15 @@
   .merx-subtitle {
     letter-spacing: 2px;
   }
-
-  .submitButton {
-    font-size: 1rem !important;
-    height: 44px !important;
-  }
 }
 
 /* ── Mobile pequeño ── */
 @media (max-width: 480px) {
   .carouselImage {
-    height: 220px;
+    height: 260px;
   }
 
-  .formContainer {
-    padding: 20px 14px;
+  .merx-product-name {
+    letter-spacing: 2px;
   }
 }
