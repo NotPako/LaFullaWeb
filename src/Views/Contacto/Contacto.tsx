@@ -7,6 +7,7 @@ export default function Contacto() {
     email: "",
     phone: "",
     message: "",
+    website: "",
   });
 
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
@@ -28,7 +29,7 @@ export default function Contacto() {
 
       if (res.ok) {
         setStatus("sent");
-        setForm({ email: "", phone: "", message: "" });
+        setForm({ email: "", phone: "", message: "", website: "" });
       } else {
         setStatus("error");
       }
@@ -42,11 +43,24 @@ export default function Contacto() {
       <h2 className="contacto-title">Contacte</h2>
 
       <form className="contacto-form" onSubmit={handleSubmit}>
+        {/* Campo trampa: invisible para personas, los bots lo rellenan y el servidor descarta el envío */}
+        <div aria-hidden="true" style={{ position: "absolute", left: "-10000px", width: 1, height: 1, overflow: "hidden" }}>
+          <input
+            type="text"
+            name="website"
+            tabIndex={-1}
+            autoComplete="off"
+            value={form.website}
+            onChange={handleChange}
+          />
+        </div>
+
         <input
           type="email"
           name="email"
           placeholder="El teu correu"
           required
+          maxLength={254}
           value={form.email}
           onChange={handleChange}
         />
@@ -55,6 +69,7 @@ export default function Contacto() {
           type="tel"
           name="phone"
           placeholder="El teu telèfon"
+          maxLength={30}
           value={form.phone}
           onChange={handleChange}
         />
@@ -64,6 +79,7 @@ export default function Contacto() {
           placeholder="Escriu el teu missatge aquí..."
           required
           rows={5}
+          maxLength={5000}
           value={form.message}
           onChange={handleChange}
         />
