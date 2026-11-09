@@ -121,6 +121,45 @@
   display: block;
 }
 
+/* Miniatura clicable que sustituye al reproductor hasta que se pulsa */
+.nr-youtube-facade {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: none;
+  background: #000;
+  cursor: pointer;
+}
+
+.nr-youtube-thumb {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* recorta las franjas negras de la miniatura 4:3 */
+  display: block;
+}
+
+.nr-youtube-play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  line-height: 0;
+  opacity: 0.85;
+  transition: opacity 0.2s ease;
+}
+
+.nr-youtube-facade:hover .nr-youtube-play,
+.nr-youtube-facade:focus-visible .nr-youtube-play {
+  opacity: 1;
+}
+
+.nr-youtube-facade:focus-visible {
+  outline: 2px solid #ffcc00;
+  outline-offset: -2px;
+}
+
 /* Spotify — altura fija */
 .nr-spotify-iframe {
   width: 100%;

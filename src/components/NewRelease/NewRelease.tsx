@@ -20,7 +20,10 @@ export default function NewRelease({
   spotifyAvailableAt = '00.00',
 }: NewReleaseProps) {
   const [activeTab, setActiveTab] = useState<'youtube' | 'spotify'>('youtube');
+  // El reproductor de YouTube pesa ~2 MB: hasta que no se pulsa, solo se muestra la miniatura
+  const [youtubeLoaded, setYoutubeLoaded] = useState(false);
   const hasSpotify = !!spotifyId;
+  const videoId = encodeURIComponent(youtubeId);
 
   return (
     <div className="nr-wrapper">
@@ -55,13 +58,38 @@ export default function NewRelease({
       <div className="nr-embed-container">
         {activeTab === 'youtube' ? (
           <div className="nr-youtube-wrapper">
-            <iframe
-              src={`https://www.youtube.com/embed/${youtubeId}?rel=0&modestbranding=1`}
-              title={title}
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-              className="nr-youtube-iframe"
-            />
+            {youtubeLoaded ? (
+              <iframe
+                src={`https://www.youtube.com/embed/${videoId}?rel=0&modestbranding=1&autoplay=1`}
+                title={title}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                className="nr-youtube-iframe"
+              />
+            ) : (
+              <button
+                type="button"
+                className="nr-youtube-facade"
+                onClick={() => setYoutubeLoaded(true)}
+                aria-label={`Reprodueix el vídeo: ${title}`}
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element -- miniatura remota de YouTube, ya viene optimizada */}
+                <img
+                  src={`https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`}
+                  alt=""
+                  width={480}
+                  height={360}
+                  decoding="async"
+                  className="nr-youtube-thumb"
+                />
+                <span className="nr-youtube-play" aria-hidden="true">
+                  <svg viewBox="0 0 68 48" width="68" height="48">
+                    <path d="M66.52 7.74c-.78-2.93-2.49-5.41-5.42-6.19C55.79.13 34 0 34 0S12.21.13 6.9 1.55C3.97 2.33 2.27 4.81 1.48 7.74.06 13.05 0 24 0 24s.06 10.95 1.48 16.26c.78 2.93 2.49 5.41 5.42 6.19C12.21 47.87 34 48 34 48s21.79-.13 27.1-1.55c2.93-.78 4.64-3.26 5.42-6.19C67.94 34.95 68 24 68 24s-.06-10.95-1.48-16.26z" fill="#f00" />
+                    <path d="M45 24 27 14v20" fill="#fff" />
+                  </svg>
+                </span>
+              </button>
+            )}
           </div>
         ) : hasSpotify ? (
           <iframe
