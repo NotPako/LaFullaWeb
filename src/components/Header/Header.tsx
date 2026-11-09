@@ -4,16 +4,7 @@ import { useState, useEffect } from "react";
 import '@/styles/styles.css';
 import '@/components/Header/Header.css';
 
-interface HeaderProps {
-  landingRef: React.RefObject<HTMLDivElement | null>;
-  gigsRef: React.RefObject<HTMLDivElement | null>;
-  merxRef: React.RefObject<HTMLDivElement | null>;
-  discografiaRef: React.RefObject<HTMLDivElement | null>;
-  contacteRef: React.RefObject<HTMLDivElement | null>;
-  xarxesRef:  React.RefObject<HTMLDivElement | null>;
-}
-
-export default function Header({ landingRef, gigsRef, discografiaRef, contacteRef, xarxesRef}: HeaderProps) {
+export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
    const [scrolled, setScrolled] = useState(false); 
 
@@ -23,8 +14,8 @@ export default function Header({ landingRef, gigsRef, discografiaRef, contacteRe
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const scrollTo = (ref: React.RefObject<HTMLDivElement | null>) => {
-    ref.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+  const scrollTo = (sectionId: string) => {
+    document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth", block: "start" });
     setMenuOpen(false);
   };
 
@@ -36,7 +27,7 @@ export default function Header({ landingRef, gigsRef, discografiaRef, contacteRe
         <h2>LA FULLA</h2>
       </div>
 
-      <div onClick={() => scrollTo(landingRef)}>
+      <div onClick={() => scrollTo("inici")}>
         <Image
           alt="La Fulla"
           src="/media/LogoGROCFULLA.png"
@@ -59,16 +50,16 @@ export default function Header({ landingRef, gigsRef, discografiaRef, contacteRe
 
       {/* Menú de navegación */}
       <nav className={`menu ${menuOpen ? "menu--open" : ""}`}>
-        <div className="menuItem" onClick={() => scrollTo(gigsRef)}>
+        <div className="menuItem" onClick={() => scrollTo("merx")}>
           <h1>Merxandatge</h1>
         </div>
-        <div className="menuItem" onClick={() => scrollTo(contacteRef)}>
+        <div className="menuItem" onClick={() => scrollTo("contacte")}>
           <h1>Contacte</h1>
         </div>
-        <div className="menuItem" onClick={() => scrollTo(discografiaRef)}>
+        <div className="menuItem" onClick={() => scrollTo("discografia")}>
           <h1>Discografia</h1>
         </div>
-        <div className="menuItem" onClick={() => scrollTo(xarxesRef)}>
+        <div className="menuItem" onClick={() => scrollTo("xarxes")}>
           <h1>Xarxes</h1>
         </div>
       </nav>

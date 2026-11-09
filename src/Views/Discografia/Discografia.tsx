@@ -1,8 +1,8 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./Discografia.css";
 import SpotifyEmbed from "@/components/SpotifyEmbed/SpotifyEmbed";
-import { Carousel } from "antd";
+import Carousel from "@/components/Carousel/Carousel";
 
 const spotifyItems = [
   { type: "album", id: "2Z67K7bSlNRCRMNi0Uhwpf" },
@@ -30,18 +30,47 @@ function useBreakpoint() {
   return slidesToShow;
 }
 
+// Los reproductores de Spotify pesan ~1 MB: solo se montan cuando la sección se acerca a la pantalla
+function useNearViewport<T extends Element>() {
+  const ref = useRef<T>(null);
+  const [near, setNear] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setNear(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "300px 0px" }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  return [ref, near] as const;
+}
+
 export default function Discografia() {
   const slidesToShow = useBreakpoint();
+  const [sectionRef, loadEmbeds] = useNearViewport<HTMLElement>();
 
   return (
-    <section className="discografia-section">
+    <section className="discografia-section" ref={sectionRef}>
       <h2 className="discografia-title">Discografia</h2>
 
       <div className="carouselDisc-container">
-        <Carousel autoplay dots arrows slidesToShow={slidesToShow}>
+        <Carousel autoplay dots arrows slidesToShow={slidesToShow} label="Discografia">
           {spotifyItems.map((item, index) => (
             <div key={index} className="carousel-slide spotify-slide">
-              <SpotifyEmbed type={item.type} id={item.id} />
+              {loadEmbeds ? (
+                <SpotifyEmbed type={item.type} id={item.id} />
+              ) : (
+                <div className="spotify-placeholder" aria-hidden="true" />
+              )}
             </div>
           ))}
         </Carousel>

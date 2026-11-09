@@ -94,23 +94,26 @@ const GigCarrousel: React.FC = () => {
         <span className="giglist-line" />
       </div>
 
-      {loading ? (
-        <div className="giglist-loading">
-          {[...Array(5)].map((_, i) => (
-            <div key={i} className="giglist-skeleton" style={{ animationDelay: `${i * 0.1}s` }} />
-          ))}
-        </div>
-      ) : gigs.length === 0 ? (
-        <p className="giglist-empty">No hi ha concerts programats de moment.</p>
-      ) : (
-        <div className="giglist-scroll">
-          <ol className="giglist" ref={listRef}>
-            {gigs.map((gig, index) => (
-              <Gig key={index} {...gig} index={index + 1} />
+      {/* Altura reservada: esqueleto, lista y mensaje vacío ocupan lo mismo y el bloque no salta */}
+      <div className="giglist-body">
+        {loading ? (
+          <div className="giglist-loading">
+            {[...Array(5)].map((_, i) => (
+              <div key={i} className="giglist-skeleton" style={{ animationDelay: `${i * 0.1}s` }} />
             ))}
-          </ol>
-        </div>
-      )}
+          </div>
+        ) : gigs.length === 0 ? (
+          <p className="giglist-empty">No hi ha concerts programats de moment.</p>
+        ) : (
+          <div className="giglist-scroll">
+            <ol className="giglist" ref={listRef}>
+              {gigs.map((gig, index) => (
+                <Gig key={index} {...gig} index={index + 1} />
+              ))}
+            </ol>
+          </div>
+        )}
+      </div>
     </div>
   );
 };

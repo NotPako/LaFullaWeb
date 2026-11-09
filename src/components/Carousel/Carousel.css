@@ -1,0 +1,111 @@
+/* Carrusel ligero que sustituye al de antd; imita su aspecto por defecto */
+.fc-carousel {
+  position: relative;
+}
+
+.fc-viewport {
+  overflow: hidden;
+}
+
+.fc-track {
+  display: flex;
+  transition: transform 0.5s ease;
+  will-change: transform;
+}
+
+.fc-track--instant {
+  transition: none;
+}
+
+.fc-slide {
+  flex-shrink: 0;
+  flex-grow: 0;
+  min-width: 0;
+}
+
+/* ── Flechas ── */
+.fc-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.25);
+  color: #fff;
+  opacity: 0.75;
+  cursor: pointer;
+  transition: opacity 0.2s ease, background-color 0.2s ease;
+}
+
+.fc-arrow:hover,
+.fc-arrow:focus-visible {
+  opacity: 1;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.fc-arrow:focus-visible {
+  outline: 2px solid #ffcc00;
+  outline-offset: 2px;
+}
+
+.fc-arrow--prev {
+  left: 8px;
+}
+
+.fc-arrow--next {
+  right: 8px;
+}
+
+/* ── Puntos (barritas, como antd) ── */
+.fc-dots {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 12px;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  pointer-events: none;
+}
+
+.fc-dot {
+  pointer-events: auto;
+  width: 16px;
+  height: 3px;
+  padding: 0;
+  border: none;
+  border-radius: 1px;
+  background: #fff;
+  opacity: 0.3;
+  cursor: pointer;
+  transition: width 0.3s ease, opacity 0.3s ease;
+  /* Zona de clic más grande que la barrita visible */
+  background-clip: content-box;
+  box-sizing: content-box;
+  padding-block: 8px;
+}
+
+.fc-dot--active {
+  width: 24px;
+  opacity: 1;
+}
+
+.fc-dot:focus-visible {
+  outline: 2px solid #ffcc00;
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fc-track,
+  .fc-dot {
+    transition: none;
+  }
+}

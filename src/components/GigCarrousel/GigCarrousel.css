@@ -36,14 +36,20 @@
 }
 
 /* ── Skeleton loader ── */
+/* Cinco filas, igual que el máximo visible de .giglist-scroll */
+.giglist-body {
+  min-height: calc(52px * 5);
+}
+
 .giglist-loading {
   display: flex;
   flex-direction: column;
   gap: 2px;
 }
 
+/* 5 x 50px + 4 huecos de 2px = 258px: cabe en la altura reservada sin estirarla */
 .giglist-skeleton {
-  height: 52px;
+  height: 50px;
   background: linear-gradient(
     90deg,
     rgba(255, 255, 255, 0.04) 0%,

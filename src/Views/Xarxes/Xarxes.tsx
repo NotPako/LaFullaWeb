@@ -1,4 +1,3 @@
-'use client';
 import './Xarxes.css';
 
 const XARXES = [
