@@ -1,7 +1,8 @@
 'use client';
 import React, { useState } from 'react';
+import Image from 'next/image';
 import './Merx.css';
-import { Carousel } from 'antd';
+import Carousel from '@/components/Carousel/Carousel';
 
 interface Product {
   image: string;
@@ -34,12 +35,15 @@ export default function Merx() {
 
         <div className="merx-content">
           <div className="carouselContainer">
-            <Carousel autoplay arrows beforeChange={(_, next) => setCurrent(next)}>
+            <Carousel autoplay arrows onChange={setCurrent} label="Merxandatge">
               {PRODUCTS.map(({ image, name }) => (
                 <div key={image} className="carousel-slide-merx">
-                  <img
+                  <Image
                     src={`/media/${image}.jpeg`}
                     alt={name}
+                    fill
+                    sizes="(max-width: 808px) calc(100vw - 32px), 760px"
+                    quality={70}
                     className="carouselImage"
                   />
                 </div>
