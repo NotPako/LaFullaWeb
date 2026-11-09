@@ -7,14 +7,10 @@
   align-items: flex-end;
 }
 
-/* Imagen de fondo (fallback / poster mientras carga el video) */
-.landingStyle::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image: url('/media/654A5957.jpg');
-  background-size: cover;
-  background-position: center center;
+/* Foto de portada: se ve mientras el vídeo carga, o en su lugar si no se carga */
+.landing-poster {
+  object-fit: cover;
+  object-position: center center;
   z-index: 0;
 }
 
@@ -33,6 +29,13 @@
   /* Escala extra para que el blur no muestre bordes */
   transform: scale(1.06);
   transform-origin: center center;
+  /* Aparece con un fundido cuando empieza a reproducirse, sin saltos sobre la foto */
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+
+.landing-video--playing {
+  opacity: 1;
 }
 
 /* Overlay: más oscuro en la mitad inferior donde va la lista */
@@ -59,9 +62,8 @@
 
 /* Mobile */
 @media (max-width: 768px) {
-  .landingStyle::before {
-    background-position: 30% center;
-    background-attachment: scroll;
+  .landing-poster {
+    object-position: 30% center;
   }
   .landing-video {
     object-position: 30% center;
