@@ -1,47 +1,27 @@
-'use client';
-import { useRef } from 'react';
 import Header from '@/components/Header/Header';
 import Footer from '@/components/Footer/Footer';
 import Landing from '@/Views/Landing/Landing';
 import Merx from '@/Views/Merx/Merx';
-import { Bebas_Neue } from 'next/font/google';
 import Discografia from '@/Views/Discografia/Discografia';
- import Contacto from '@/Views/Contacto/Contacto';
+import Contacto from '@/Views/Contacto/Contacto';
 import Xarxes from '@/Views/Xarxes/Xarxes';
 
-
-const bebas = Bebas_Neue({ weight: "400", subsets: ["latin"], display: "swap" });
-
-
-
+// Componente de servidor: solo hidratan en el navegador las secciones que lo necesitan.
+// Los id son los destinos del menú de Header
 export default function Home() {
- 
-
-  const landingRef = useRef<HTMLDivElement>(null);
-  const gigsRef = useRef<HTMLDivElement>(null);
-  const merxRef = useRef<HTMLDivElement>(null);
-  const discografiaRef = useRef<HTMLDivElement>(null);
-  const contactoRef = useRef<HTMLDivElement>(null);
-  const xarxesRef = useRef<HTMLDivElement>(null);
-
-
   return (
-    <div className={bebas.className}>
+    <div className="page-root">
       <div>
-      <Header landingRef={landingRef} gigsRef={gigsRef} merxRef={merxRef} discografiaRef={discografiaRef} contacteRef={contactoRef} xarxesRef={xarxesRef}>
-      </Header>
-      <div className="flex flex-col">
-        <div ref={landingRef}><Landing/></div>
-        <div ref={gigsRef} ><Merx/></div>
-        <div ref={discografiaRef}><Discografia/></div>
-        <div ref={contactoRef}><Contacto/></div>
-        <div ref={xarxesRef}><Xarxes/></div>
-      </div>
-      <Footer>
-      </Footer>
+        <Header />
+        <div className="flex flex-col">
+          <div id="inici"><Landing /></div>
+          <div id="merx"><Merx /></div>
+          <div id="discografia"><Discografia /></div>
+          <div id="contacte"><Contacto /></div>
+          <div id="xarxes"><Xarxes /></div>
+        </div>
+        <Footer />
       </div>
     </div>
   );
 }
-
-

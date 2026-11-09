@@ -4,7 +4,6 @@
   --accent: #ffcc00;
   --font-display: var(--font-bebas), sans-serif;
   --font-body: var(--font-geist-sans), sans-serif;
-  --font-mono: var(--font-geist-mono), monospace;
 }
 
 * {
@@ -15,6 +14,13 @@ body {
   color: var(--foreground);
   background: var(--background);
   font-family: var(--font-body);
+}
+
+/* La página hereda Bebas Neue por defecto (antes lo hacía una segunda instancia de la fuente en page.tsx) */
+.page-root {
+  font-family: var(--font-bebas), sans-serif;
+  font-style: normal;
+  font-weight: 400;
 }
 
 /* Títulos grandes usan Bebas Neue en toda la web */
