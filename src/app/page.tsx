@@ -3,6 +3,7 @@ import Footer from '@/components/Footer/Footer';
 import Landing from '@/Views/Landing/Landing';
 import Merx from '@/Views/Merx/Merx';
 import Discografia from '@/Views/Discografia/Discografia';
+import Membres from '@/Views/Membres/Membres';
 import Contacto from '@/Views/Contacto/Contacto';
 import Xarxes from '@/Views/Xarxes/Xarxes';
 
@@ -17,6 +18,7 @@ export default function Home() {
           <div id="inici"><Landing /></div>
           <div id="merx"><Merx /></div>
           <div id="discografia"><Discografia /></div>
+          <div id="grup"><Membres /></div>
           <div id="contacte"><Contacto /></div>
           <div id="xarxes"><Xarxes /></div>
         </div>
