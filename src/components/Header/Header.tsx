@@ -59,6 +59,9 @@ export default function Header() {
         <div className="menuItem" onClick={() => scrollTo("discografia")}>
           <h1>Discografia</h1>
         </div>
+        <div className="menuItem" onClick={() => scrollTo("grup")}>
+          <h1>El grup</h1>
+        </div>
         <div className="menuItem" onClick={() => scrollTo("xarxes")}>
           <h1>Xarxes</h1>
         </div>
